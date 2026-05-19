@@ -1,0 +1,36 @@
+data:
+  adata_path: "./data/bench/tcr/anndata/anndata.h5ad"
+
+model:
+  k: 50
+  progenitor: "EE"
+  terminal:
+    - "TE"
+    - "MP"
+  lineage_col: "lineage"
+  emb_key: "emb"
+  device: "cuda"
+  seed: [17, 42, 73, 89, 123, 256, 311, 379, 421, 512, 587, 643, 701, 768, 829, 907, 1024, 1153, 1297, 1429]
+
+lineage_graph:
+  mask_threshold: 0.8
+  epsilon: 1
+  mode: "composite"
+
+train:
+  pre_train: "combined"
+  lr:
+    formal: 1.0e-4
+    intra: 1.0e-3
+    lineage: 3.0e-4
+  iter:
+    formal: 500
+    intra: 100
+    lineage: 500
+  sample_ratio: [128,256,512,1024]
+  alpha: 0
+
+evaluation:
+  ground_truth_col: "ground_truth"
+  fate_bias_col: "fate_bias"
+  threshold: 0.5

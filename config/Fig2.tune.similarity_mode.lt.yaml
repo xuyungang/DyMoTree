@@ -1,0 +1,36 @@
+data:
+  adata_path: "./data/bench/lt/day246/anndata/anndata.h5ad"
+
+model:
+  k: 50
+  progenitor: "Undifferentiated"
+  terminal:
+    - "Neutrophil"
+    - "Monocyte"
+  lineage_col: "Cell.type.annotation"
+  emb_key: "emb"
+  device: "cuda"
+  seed: [17, 42, 73, 89, 123, 256, 311, 379, 421, 512, 587, 643, 701, 768, 829, 907, 1024, 1153, 1297, 1429]
+
+lineage_graph:
+  mask_threshold: 0.8
+  epsilon: 1
+  mode: ["shortest_path","linear_kernel","composite"]
+
+train:
+  pre_train: "combined"
+  lr:
+    formal: 1.0e-4
+    intra: 1.0e-3
+    lineage: 1.0e-4
+  iter:
+    formal: 300
+    intra: 100
+    lineage: 300
+  sample_ratio: 128
+  alpha: 0
+
+evaluation:
+  ground_truth_col: "ground_truth"
+  fate_bias_col: "fate_bias"
+  threshold: 0.5
