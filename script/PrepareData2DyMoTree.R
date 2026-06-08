@@ -1,5 +1,4 @@
 
-#------------------------------制备HSPC->Mono/Neu  二叉树
 sub.srt <- sub.srt[,sub.srt@meta.data %>% filter(celltype%in%c('HSPC','Monocyte','Neutrophil')) %>% rownames()]
 sub.srt <- NormalizeData(sub.srt,normalization.method = 'LogNormalize')
 sub.srt <- FindVariableFeatures(sub.srt)

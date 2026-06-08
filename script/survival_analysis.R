@@ -13,7 +13,6 @@ at1 <- gene %>% arrange(desc(AT1_fate)) %>% dplyr::select(X)
 emt <- gene %>% arrange(desc(EMT_fate)) %>% dplyr::select(X)
 
 gene_set <- toupper(at1$X[1:30])
-#gene_set <- toupper(emt$X[1:30])
 
 
 entrez_conversion <- bitr(toupper(gene_set), 
@@ -39,8 +38,7 @@ fit_set <- survfit(surv_object_set ~ score_group, data = final_data)
 ggsurvplot(
   fit_set,
   data = final_data,
-  pval = TRUE,                     
-  #conf.int = TRUE,                 
+  pval = TRUE,                                    
   risk.table = TRUE,              
   legend.labs = c("low", "high"),
   legend.title = "AT1_fate",
@@ -53,5 +51,5 @@ ggsurvplot(
   font.legend=15,
   font.x='bold',
   font.y='bold'
-  #ggtheme = theme_minimal()         
+      
 )

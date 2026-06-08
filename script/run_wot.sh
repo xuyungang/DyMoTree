@@ -1,16 +1,8 @@
 #!/bin/bash
-#SBATCH -J Waddington_OT         # 作业名称
-#SBATCH -A wangjiayi             # 项目账户名
-#SBATCH -N 1                     # 1个节点
-#SBATCH -n 1                     # 1个任务
-#SBATCH -c 16                    # 每个任务1个CPU核心
-#SBATCH -o out.%j.log            # 标准输出日志
-#SBATCH -e err.%j.log            # 错误输出日志
-#SBATCH --time=12:00:00          # 最大运行时间3小时
 
 echo "action"
 module load miniconda3/25.5.1
-conda activate /data02/work/wangjiayi/SoftWare/CONDA/conda_dir/envs/wot
+conda activate ./CONDA/conda_dir/envs/wot
 
 # 定义要处理的 day 文件夹列表
 DAYS=("day2" "day4" "day6" "day246")
@@ -19,8 +11,8 @@ DAYS=("day2" "day4" "day6" "day246")
 for DAY in "${DAYS[@]}"; do
     echo "Processing ${DAY} ..."
 
-    TARGET_DIR="/data02/work/wangjiayi/My_project/DyMoTree1.0/experiment/benchmark/${DAY}"
-    DATA_DIR="/data02/work/wangjiayi/My_project/DyMoTree1.0/data/bench/lt/${DAY}/wot/"
+    TARGET_DIR="./experiment/benchmark/${DAY}"
+    DATA_DIR="./data/bench/lt/${DAY}/wot/"
 
     for i in 1; do
         echo "Run $i for ${DAY}:"

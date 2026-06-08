@@ -6,21 +6,21 @@ BiocManager::install("scater")
 
 library(splatter)
 library(scater)
-#模拟HSPC向Neu和Mono分化
+
 params <- newSplatParams()
 params <- setParam(params, "nGenes", 1000)
 params <- setParam(params, "batchCells", 5000)
 sim <- splatSimulatePaths(
   seed=801,
   params,
-  group.prob = c(2,2,2,3,3)/sum(c(2,2,2,3,3)),   #设置每个cluster的细胞数占比
-  de.prob =0.5,  #设置差异表达基因的比例
-  path.from = c(0,1,1,2,3),  #设置发育顺序，会使cluster变为path,
-  path.nSteps = 10000,#轨迹平滑度
-  de.facScale = c(0.2, 0.4, 0.4, 0.2, 0.2),#各分支细胞变异程度
-  path.skew=1,  #设置每个Path集中于头部还是尾部,
-  bcv.common=1,#共变系数
-  out.prob=0.001,#离群点权重
+  group.prob = c(2,2,2,3,3)/sum(c(2,2,2,3,3)),  
+  de.prob =0.5,  
+  path.from = c(0,1,1,2,3),  
+  path.nSteps = 10000,
+  de.facScale = c(0.2, 0.4, 0.4, 0.2, 0.2),
+  path.skew=1,  
+  bcv.common=1,
+  out.prob=0.001,
   verbose = FALSE
 )
 sim <- logNormCounts(sim)

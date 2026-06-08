@@ -1,31 +1,29 @@
-# 加载必要的包
+
 library(clusterProfiler)
-library(org.Hs.eg.db)   # 如果是小鼠数据（Mus musculus）
-library(org.Mm.eg.db) # 如果是人类数据，取消这一行注释
+library(org.Hs.eg.db)  
+library(org.Mm.eg.db)
 
 library(enrichplot)
 library(ggplot2)
 library(DOSE)
 
-# 转置矩阵，使样本为行，基因为列
 
 genes <- read.csv('../CPTAC/LUAD.driver.csv')
 at1 <- genes %>% arrange(desc(AT1_fate)) %>% dplyr::select(X)
 emt <- genes %>% arrange(desc(EMT_fate)) %>% dplyr::select(X)
 
 
-# 4️⃣ GO 富集分析
 at1_ego <- enrichGO(gene         = at1$X[1:30],
-                OrgDb        = org.Mm.eg.db,  # 或 org.Hs.eg.db
+                OrgDb        = org.Mm.eg.db,  
                 keyType      = "SYMBOL",
-                ont          = "BP",   # 可改为 "BP" "CC" "MF"
+                ont          = "BP",  
                 pAdjustMethod= "BH",
                 pvalueCutoff = 0.05,
                 qvalueCutoff = 0.05)
 emt_ego <- enrichGO(gene         = emt$X[1:30],
-                    OrgDb        = org.Mm.eg.db,  # 或 org.Hs.eg.db
+                    OrgDb        = org.Mm.eg.db,  
                     keyType      = "SYMBOL",
-                    ont          = "BP",   # 可改为 "BP" "CC" "MF"
+                    ont          = "BP",  
                     pAdjustMethod= "BH",
                     pvalueCutoff = 0.05,
                     qvalueCutoff = 0.05)
