@@ -9,7 +9,7 @@ DyMoTree models progenitor-to-terminal cell-state transitions under an explicit 
 3. discovery of lineage-specific signature genes.
 
 <p align="center">
-  <img src="images/model.jpg" alt="DyMoTree model overview" width="720"/>
+  <img src="images/models.jpg" alt="DyMoTree model overview" width="720"/>
 </p>
 
 <p align="center">
