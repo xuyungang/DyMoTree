@@ -16,7 +16,9 @@ DyMoTree models progenitor-to-terminal cell-state transitions under an explicit 
   <b>Overview of DyMoTree for nonlinear progenitor-to-terminal cell-state mapping.</b>
 </p>
 
-Preprint: to be added
+DyMoTree decodes early cell state transitions and drivers from single-cell transcriptomes using a tree-structured neural network
+
+Preprint: https://doi.org/10.64898/2026.06.09.731114
 
 ---
 
